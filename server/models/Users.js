@@ -6,4 +6,4 @@ const UsersSchema=new mongose.Schema({
 })
 
 const UserModel=mongose.model("users",UsersSchema)
-module.exports(UserModel)
+module.exports=UserModel

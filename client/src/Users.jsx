@@ -1,8 +1,18 @@
 import { Button } from 'bootstrap'
-import React,{useState} from 'react'
+import React,{useState,useEffect} from 'react'
+import axios from 'axios'
 
 function Users() {
-    const[users,setUser]=useState([{Name:'alan',Email:'a@gmail.com',Age:25},{Name:'vidhya',Email:'b@gmail.com',Age:26}])
+    const[users,setUser]=useState([])
+    useEffect(()=>{
+axios.get('http://localhost:3001')
+
+.then(result=>{
+    setUser(result.data)
+})
+.catch(err=>console.log(err))
+},[])
+  
   return (
 
     <div >
@@ -18,10 +28,10 @@ function Users() {
             <tbody>
 {
     users.map((user)=>{
-      return  <tr key={user.Name} >
-            <td >{user.Name}</td>
-            <td>{user.Email}</td>
-            <td>{user.Age}</td>
+      return  <tr key={user.name} >
+            <td >{user.name}</td>
+            <td>{user.nmail}</td>
+            <td>{user.age}</td>
             <td><button>Edit</button><button>Delete</button></td>
         </tr>
     })
