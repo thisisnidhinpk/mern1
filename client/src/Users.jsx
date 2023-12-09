@@ -1,6 +1,7 @@
 import { Button } from 'bootstrap'
 import React,{useState,useEffect} from 'react'
 import axios from 'axios'
+import { Link } from 'react-router-dom'
 
 function Users() {
     const[users,setUser]=useState([])
@@ -32,7 +33,7 @@ axios.get('http://localhost:3001')
             <td >{user.name}</td>
             <td>{user.nmail}</td>
             <td>{user.age}</td>
-            <td><button>Edit</button><button>Delete</button></td>
+            <td><Link to={`/update/${user._id}`} className="btn btn-success">Edit</Link><button>Delete</button></td>
         </tr>
     })
 }</tbody>
